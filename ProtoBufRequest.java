@@ -57,7 +57,7 @@ public class ProtoBufRequest<ReqT extends Message, RespT extends Message> extend
                 throw new IllegalArgumentException("The response type was never provided.");
             }
                 RespT responseInstance = responseType.newInstance();
-                return (Response<RespT>) Response.success(
+                return Response<RespT>.success(
                         responseInstance.newBuilderForType().mergeFrom(response.data).build(),
                         HttpHeaderParser.parseCacheHeaders(response));
         } catch (Exception e) {
